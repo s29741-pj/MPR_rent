@@ -2,7 +2,7 @@ package com.example.carrental;
 
 import org.springframework.stereotype.Component;
 
-import java.sql.SQLOutput;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -24,6 +24,27 @@ public class RentalStorage {
         return false;
     }
 
+    public boolean checkIfAvailable(Customer customer) {
+        if (rentalList.isEmpty() || !checkIfCarOnRentalList(customer.getSelectedCarVin())) {
+            if(rentDatesPreCheck(customer)){
+                return true;
+            }else {
+                System.out.println("Wrong date provided:");
+                printCustomerCarDates(customer);
+                System.out.println("Rents can be made only after:");
+                printMinRentDate();
+                return false;
+            }
+        }else if(checkDateRentStart(customer) && checkDateRentEnd(customer)) {
+            return true;
+        }else {
+            System.out.println("Car with VIN " + customer.getSelectedCarVin() + " is not available until:");
+            printRentEndDate(customer);
+            return false;
+        }
+    }
+
+//    date getters
     private Rent getSelectedRentalDates(String vin) {
         for (Rent rent : rentalList) {
             if (rent.getRentCarVin().equals(vin)) {
@@ -45,6 +66,15 @@ public class RentalStorage {
         return  customer.getSelectedRentStart().after(Calendar.getInstance(TimeZone.getTimeZone("Europe/Warsaw")));
     }
 
+    private boolean checkDateEndOffRentalList(Customer customer) {
+        return  customer.getSelectedRentStart().after(Calendar.getInstance(TimeZone.getTimeZone("Europe/Warsaw")));
+    }
+
+    private boolean rentDatesPreCheck(Customer customer) {
+        return checkDateStartOffRentalList(customer) && checkDateEndOffRentalList(customer);
+    }
+
+//    date printers
     private void printMinRentDate() {
         System.out.print(Calendar.getInstance(TimeZone.getTimeZone("Europe/Warsaw")).get(Calendar.DAY_OF_MONTH) + "/");
         System.out.print(Calendar.getInstance(TimeZone.getTimeZone("Europe/Warsaw")).get(Calendar.MONTH)+1 + "/");
@@ -64,31 +94,6 @@ public class RentalStorage {
     }
 
 
-    private boolean checkDateEndOffRentalList(Customer customer) {
-        return  customer.getSelectedRentStart().after(Calendar.getInstance(TimeZone.getTimeZone("Europe/Warsaw")));
-    }
 
-    private boolean rentDatesPreCheck(Customer customer) {
-        return checkDateStartOffRentalList(customer) && checkDateEndOffRentalList(customer);
-    }
 
-    public boolean checkIfAvailable(Customer customer) {
-        if (rentalList.isEmpty() || !checkIfCarOnRentalList(customer.getSelectedCarVin())) {
-            if(rentDatesPreCheck(customer)){
-                return true;
-            }else {
-                System.out.println("Wrong date provided:");
-                printCustomerCarDates(customer);
-                System.out.println("Rents can be made only after:");
-                printMinRentDate();
-                return false;
-            }
-        }else if(checkDateRentStart(customer) && checkDateRentEnd(customer)) {
-                return true;
-        }else {
-            System.out.println("Car with VIN " + customer.getSelectedCarVin() + " is not available until:");
-            printRentEndDate(customer);
-            return false;
-        }
-    }
 }
