@@ -24,7 +24,7 @@ public class CarRentalApplication {
         carService.addCustomer(new Customer(0,"SCFEKBBK1DGD16518","2024/11/23","2023/11/25"));
         carService.checkIfAvailable(rentService, rentalStorage,carService.getCustomer(0), carStorage, 0);
 
-//        20.11 stopped here, to be checked why VIN below is not found
+
         carService.addCustomer(new Customer(1,"SCFEKBBK1DGD16518","2024/11/23","2024/11/25"));
         carService.checkIfAvailable(rentService, rentalStorage, carService.getCustomer(1),  carStorage, 1);
 

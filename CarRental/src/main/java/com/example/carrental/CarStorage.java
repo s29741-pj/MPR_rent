@@ -29,7 +29,6 @@ public class CarStorage {
     }
 
     public float getPrice(String vin) {
-
         for (Car carFromList : carsList) {
             if(carFromList.getVin().equals(vin)) {
                return carFromList.getPricePerDay();

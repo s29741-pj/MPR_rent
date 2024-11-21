@@ -17,17 +17,14 @@ public class CarService {
         System.out.println("New customer added");
     }
 
-    private void checkCarPrice(CarStorage carStorage, int id){
+    private void setCarPrice(CarStorage carStorage, int id){
         getCustomer(id).setPrice(carStorage.getPrice(getCustomer(id).getSelectedCarVin()));
     }
 
-//    public void checkCarPriceNewCustomer(CarStorage carStorage){
-//        this.getCustomer(this.getNewCustomer()).setPrice(carStorage.getPrice(this.getCustomer(this.getNewCustomer()).getSelectedCarVin()));
-//    }
 
 
     public void checkIfAvailable(RentService rentService,RentalStorage rentalStorage, Customer customer,CarStorage carStorage, int id){
-        checkCarPrice(carStorage,id);
+        setCarPrice(carStorage,id);
         if(rentalStorage.checkIfAvailable(customer)){
             rentService.uploadNewCustomer(rentalStorage,this);
             System.out.println("New rental added");
