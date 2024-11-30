@@ -3,6 +3,7 @@ package com.example.carrental;
 import org.springframework.stereotype.Component;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -10,7 +11,7 @@ import java.util.Calendar;
 public class CarService {
 
     ArrayList<Customer> customers = new ArrayList<>();
-
+//    move Customers to another storage class
 
     public void addCustomer(Customer customer) {
         customers.add(customer);
@@ -57,11 +58,11 @@ public class CarService {
         return customers.get(id).getCustomerId();
     }
 
-    public Calendar getCustomerRentStart(int id){
+    public LocalDate getCustomerRentStart(int id){
         return customers.get(id).getSelectedRentStart();
     }
 
-    public Calendar getCustomerRentEnd(int id){
+    public LocalDate getCustomerRentEnd(int id){
         return customers.get(id).getSelectedRentEnd();
     }
 

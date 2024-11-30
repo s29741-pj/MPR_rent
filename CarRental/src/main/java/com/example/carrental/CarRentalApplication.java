@@ -2,7 +2,6 @@ package com.example.carrental;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 
 
 @SpringBootApplication
@@ -21,11 +20,11 @@ public class CarRentalApplication {
     }
 
     public void runApp(){
-        carService.addCustomer(new Customer(0,"SCFEKBBK1DGD16518","2024/11/23","2023/11/25"));
+        carService.addCustomer(new Customer(0,"SCFEKBBK1DGD16518","2024-12-18","2024-12-23"));
         carService.checkIfAvailable(rentService, rentalStorage,carService.getCustomer(0), carStorage, 0);
 
 
-        carService.addCustomer(new Customer(1,"SCFEKBBK1DGD16518","2024/11/23","2024/11/25"));
+        carService.addCustomer(new Customer(1,"SCFEKBBK1DGD16518","2024-12-23","2024-12-25"));
         carService.checkIfAvailable(rentService, rentalStorage, carService.getCustomer(1),  carStorage, 1);
 
 //        carService.addCustomer(new Customer(2,"SCFEKBBK1DGD16518","2024/10/23","2023/10/25"));
