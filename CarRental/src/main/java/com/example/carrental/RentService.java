@@ -5,28 +5,28 @@ import org.springframework.stereotype.Component;
 @Component
 public class RentService {
 
-
-    public void uploadCustomersList(RentalStorage rentalStorage, CarService carService) {
-        for (Customer customer : carService.getCustomersList()) {
+//    to be refactored after moving customers from CarService
+//    public void uploadCustomersList(RentalStorage rentalStorage, CarService carService) {
+//        for (CustomerStorage customerStorage : carService.getCustomersList()) {
+//            rentalStorage.addNewRental(
+//                    new Rent(
+//                            carService.getRentCarVin(customerStorage.getCustomerId()),
+//                            carService.getCustomerId(customerStorage.getCustomerId()),
+//                            carService.getCustomerRentStart(customerStorage.getCustomerId()),
+//                            carService.getCustomerRentEnd(customerStorage.getCustomerId()),
+//                            carService.getCustomerPrice(customerStorage.getCustomerId())
+//                    )
+//            );
+//        }
+//    }
+    public void uploadNewCustomer(RentalStorage rentalStorage, CustomerStorage customerStorage, int customerID) {
             rentalStorage.addNewRental(
                     new Rent(
-                            carService.getRentCarVin(customer.getCustomerId()),
-                            carService.getCustomerId(customer.getCustomerId()),
-                            carService.getCustomerRentStart(customer.getCustomerId()),
-                            carService.getCustomerRentEnd(customer.getCustomerId()),
-                            carService.getCustomerPrice(customer.getCustomerId())
-                    )
-            );
-        }
-    }
-    public void uploadNewCustomer(RentalStorage rentalStorage, CarService carService) {
-            rentalStorage.addNewRental(
-                    new Rent(
-                            carService.getRentCarVin(carService.getNewCustomer()),
-                            carService.getCustomerId(carService.getNewCustomer()),
-                            carService.getCustomerRentStart(carService.getNewCustomer()),
-                            carService.getCustomerRentEnd(carService.getNewCustomer()),
-                            carService.getCustomerPrice(carService.getNewCustomer())
+                            customerStorage.getCustomer(customerID).getSelectedCarVin(),
+                            customerStorage.getCustomer(customerID).getCustomerID(),
+                            customerStorage.getCustomer(customerID).getSelectedRentStart(),
+                            customerStorage.getCustomer(customerID).getSelectedRentEnd(),
+                            customerStorage.getCustomer(customerID).getPrice()
                     )
             );
 

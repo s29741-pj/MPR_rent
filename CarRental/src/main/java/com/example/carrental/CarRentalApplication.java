@@ -10,22 +10,30 @@ public class CarRentalApplication {
     private final CarStorage carStorage;
     private final RentService rentService;
     private final RentalStorage rentalStorage;
+    private final  CustomerStorage customerStorage;
 
-    public CarRentalApplication(CarService carService, CarStorage carStorage, RentService rentService, RentalStorage rentalStorage) {
+    public CarRentalApplication(CarService carService, CarStorage carStorage, RentService rentService, RentalStorage rentalStorage, CustomerStorage customerStorage) {
         this.carService = carService;
         this.carStorage = carStorage;
         this.rentService = rentService;
         this.rentalStorage = rentalStorage;
+        this.customerStorage = customerStorage;
         runApp();
     }
 
     public void runApp(){
-        carService.addCustomer(new Customer(0,"SCFEKBBK1DGD16518","2024-12-18","2024-12-23"));
-        carService.checkIfAvailable(rentService, rentalStorage,carService.getCustomer(0), carStorage, 0);
+//        carService.addCustomer(new CustomerStorage(0,"SCFEKBBK1DGD16518","2024-12-18","2024-12-23"));
+        customerStorage.addCustomer(new Customer (0,"SCFEKBBK1DGD16518","2024-12-18","2024-12-23"));
+        carService.checkIfAvailable(rentService,rentalStorage, customerStorage,0,carStorage);
 
+        customerStorage.addCustomer(new Customer (1,"SCFEKBBK1DGD16518","2024-12-23","2024-12-25"));
+        carService.checkIfAvailable(rentService,rentalStorage, customerStorage,1,carStorage);
 
-        carService.addCustomer(new Customer(1,"SCFEKBBK1DGD16518","2024-12-23","2024-12-25"));
-        carService.checkIfAvailable(rentService, rentalStorage, carService.getCustomer(1),  carStorage, 1);
+//        carService.checkIfAvailable(rentService, rentalStorage,carService.getCustomer(0), carStorage, 0);
+//
+//
+//        carService.addCustomer(new CustomerStorage(1,"SCFEKBBK1DGD16518","2024-12-23","2024-12-25"));
+//        carService.checkIfAvailable(rentService, rentalStorage, carService.getCustomer(1),  carStorage, 1);
 
 //        carService.addCustomer(new Customer(2,"SCFEKBBK1DGD16518","2024/10/23","2023/10/25"));
 //        carService.checkIfAvailable(rentService, rentalStorage,carService.getCustomer(2), carStorage, 2);
