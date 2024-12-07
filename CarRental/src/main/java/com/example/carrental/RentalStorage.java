@@ -15,15 +15,6 @@ public class RentalStorage {
         rentalList.add(rent);
     }
 
-    private boolean checkIfCarOnRentalList(String vin) {
-        for (Rent rent : rentalList) {
-            if (rent.getRentCarVin().equals(vin)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public boolean checkIfAvailable(CustomerStorage customerStorage, int customerID) {
         if (rentalList.isEmpty() || !checkIfCarOnRentalList(customerStorage.getCustomer(customerID).getSelectedCarVin())) {
             if(rentDatesPreCheck(customerStorage, customerID)){
@@ -43,6 +34,18 @@ public class RentalStorage {
             return false;
         }
     }
+
+
+    private boolean checkIfCarOnRentalList(String vin) {
+        for (Rent rent : rentalList) {
+            if (rent.getRentCarVin().equals(vin)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 
 //    date getters
     private Rent getSelectedRentalDates(String vin) {

@@ -18,15 +18,6 @@ public class CarStorage {
         carsList.add(new Car("WVWPD63BX3P383153","Volkswagen","Passat","Daily",600));
     }
 
-    public void getCarsList() {
-        for(Car car : carsList) {
-            System.out.println(car.getVin());
-            System.out.println(car.getBrand());
-            System.out.println(car.getModel());
-            System.out.println(car.getType());
-            System.out.println(car.getPricePerDay());
-        }
-    }
 
     public float getPrice(String vin) {
         for (Car carFromList : carsList) {

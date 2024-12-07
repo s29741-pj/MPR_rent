@@ -1,14 +1,17 @@
 package com.example.carrental;
 
 public class Car {
-   private String vin;
-   private String brand;
-   private String model;
-   private String type;
-   private float pricePerDay;
+    private String vin;
+    private String brand;
+    private String model;
+    private String type;
+    private float pricePerDay;
 
+    //non-parameter constructor - for tests only
+    public Car() {
+    }
 
-   public Car(String vin, String brand, String model, String type, float price) {
+    public Car(String vin, String brand, String model, String type, float price) {
         this.vin = vin;
         this.brand = brand;
         this.model = model;
@@ -25,8 +28,31 @@ public class Car {
         this.pricePerDay = original.pricePerDay;
     }
 
+    //    setters
+
+    public void setVin(String vin) {
+        this.vin = vin;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setPricePerDay(float pricePerDay) {
+        this.pricePerDay = pricePerDay;
+    }
+
+    //    getters
     public String getVin() {
-       return vin;
+        return vin;
     }
 
     public String getBrand() {
@@ -42,6 +68,6 @@ public class Car {
     }
 
     public float getPricePerDay() {
-       return pricePerDay;
+        return pricePerDay;
     }
 }

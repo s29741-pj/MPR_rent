@@ -2,8 +2,7 @@ package com.example.carrental;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
+
 
 public class Rent {
     private String rentCarVin;
@@ -17,7 +16,7 @@ public class Rent {
         this.customerId = customerId;
         this.rentStart = setRentStart(selectedRentStart);
         this.rentEnd = setRentEnd(selectedRentEnd);
-        setTotalPrice(price, selectedRentStart, selectedRentEnd);
+        this.rentPrice = setTotalPrice(price, selectedRentStart, selectedRentEnd);
     }
 
 //    setters
@@ -37,17 +36,10 @@ public class Rent {
     }
 
 
-//    public void setRentEnd(Calendar selectedRentEnd) {
-//        int year = selectedRentEnd.get(Calendar.YEAR);
-//        int month = selectedRentEnd.get(Calendar.MONTH);
-//        int day = selectedRentEnd.get(Calendar.DAY_OF_MONTH);
-//        this.rentEnd.set(year, month, day);
-//    }
-
-    public void setTotalPrice (float price, LocalDate selectedRentStart, LocalDate selectedRentEnd)
+    public float setTotalPrice (float price, LocalDate selectedRentStart, LocalDate selectedRentEnd)
     {
         int rentPeriod = calculateRentPeriod(selectedRentStart, selectedRentEnd);
-         this.rentPrice = price * rentPeriod;
+        return price * rentPeriod;
     }
 
 //    getters
@@ -65,11 +57,6 @@ public class Rent {
 //
     private int calculateRentPeriod(LocalDate selectedRentStart, LocalDate selectedRentEnd) {
         Period period = Period.between(selectedRentStart, selectedRentEnd);
-
-//        long rentStartMillis = selectedRentStart.getTimeInMillis();
-//        long rentEndMillis = selectedRentEnd.getTimeInMillis();
-//        long millisDiff = Math.abs(rentEndMillis - rentStartMillis);
-
         return period.getDays();
     }
 

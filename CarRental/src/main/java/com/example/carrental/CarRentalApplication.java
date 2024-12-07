@@ -22,24 +22,14 @@ public class CarRentalApplication {
     }
 
     public void runApp(){
-//        carService.addCustomer(new CustomerStorage(0,"SCFEKBBK1DGD16518","2024-12-18","2024-12-23"));
+
         customerStorage.addCustomer(new Customer (0,"SCFEKBBK1DGD16518","2024-12-18","2024-12-23"));
         carService.checkIfAvailable(rentService,rentalStorage, customerStorage,0,carStorage);
 
         customerStorage.addCustomer(new Customer (1,"SCFEKBBK1DGD16518","2024-12-23","2024-12-25"));
         carService.checkIfAvailable(rentService,rentalStorage, customerStorage,1,carStorage);
 
-//        carService.checkIfAvailable(rentService, rentalStorage,carService.getCustomer(0), carStorage, 0);
-//
-//
-//        carService.addCustomer(new CustomerStorage(1,"SCFEKBBK1DGD16518","2024-12-23","2024-12-25"));
-//        carService.checkIfAvailable(rentService, rentalStorage, carService.getCustomer(1),  carStorage, 1);
 
-//        carService.addCustomer(new Customer(2,"SCFEKBBK1DGD16518","2024/10/23","2023/10/25"));
-//        carService.checkIfAvailable(rentService, rentalStorage,carService.getCustomer(2), carStorage, 2);
-//
-//        carService.addCustomer(new Customer(3,"SCFEKBBK","2024/11/23","2023/11/25"));
-//        carService.checkIfAvailable(rentService, rentalStorage,carService.getCustomer(3),  carStorage, 3);
 
 
     }

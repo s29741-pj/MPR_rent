@@ -12,12 +12,6 @@ public class CustomerStorage {
 
     ArrayList<Customer> customerStorage = new ArrayList<>();
 
-//    public CustomerStorage() {
-//        addCustomer(new Customer (0,"SCFEKBBK1DGD16518","2024-12-18","2024-12-23"));
-//        addCustomer(new Customer (1,"SCFEKBBK1DGD16518","2024-12-23","2024-12-25"));
-//    }
-
-
 
     public void addCustomer(Customer customer) {
         customerStorage.add(customer);
