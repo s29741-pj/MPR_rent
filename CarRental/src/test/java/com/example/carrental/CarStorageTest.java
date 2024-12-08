@@ -6,19 +6,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class CarStorageTest {
-    private CarService carService;
-    private RentService rentService;
-    private RentalStorage rentalStorage;
-    private CustomerStorage customerStorage;
     private CarStorage carStorage;
-    private Customer customer;
 
     @BeforeEach
     public void setUp() {
-        carService = new CarService();
-        rentService = new RentService();
-        rentalStorage = new RentalStorage();
-        customerStorage = new CustomerStorage();
         carStorage = new CarStorage();
     }
 
@@ -30,7 +21,8 @@ public class CarStorageTest {
 
     @Test
     void test_getPriceVinIncorrect() {
-        assertThrows(IllegalArgumentException.class, carStorage.getPrice("1234"));
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,() -> {carStorage.getPrice("1234");});
+        assertEquals("Car with VIN 1234 not found.", e.getMessage());
     }
 
 

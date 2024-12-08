@@ -35,7 +35,6 @@ public class RentalStorage {
         }
     }
 
-
     private boolean checkIfCarOnRentalList(String vin) {
         for (Rent rent : rentalList) {
             if (rent.getRentCarVin().equals(vin)) {
