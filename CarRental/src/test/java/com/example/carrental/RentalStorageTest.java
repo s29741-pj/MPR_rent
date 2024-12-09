@@ -54,7 +54,7 @@ public class RentalStorageTest {
         carService.checkIfAvailable(rentService, rentalStorage, customerStorage, 2, carStorage);
         customerStorage.addCustomer(new Customer(3, "SCFEKBBK1DGD16518", "2025-06-16", "2025-06-18"));
         carService.checkIfAvailable(rentService, rentalStorage, customerStorage, 3, carStorage);
-        customerStorage.addCustomer(new Customer(4, "SCFEKBBK1DGD16518", "2025-06-14", "2025-06-21"));
+        customerStorage.addCustomer(new Customer(1, "SCFEKBBK1DGD16518", "2025-06-14", "2025-06-21"));
         carService.checkIfAvailable(rentService, rentalStorage, customerStorage, 4, carStorage);
 
         assertFalse(rentalStorage.checkIfAvailable(customerStorage, 1));
@@ -69,14 +69,14 @@ public class RentalStorageTest {
         carService.checkIfAvailable(rentService, rentalStorage, customerStorage, 0, carStorage);
         customerStorage.addCustomer(new Customer(1, "SCFEKBBK1DGD16518", "2025-06-09", "2025-06-11"));
         carService.checkIfAvailable(rentService, rentalStorage, customerStorage, 1, carStorage);
-//        customerStorage.addCustomer(new Customer(2, "SCFEKBBK1DGD16518", "2025-06-21", "2025-06-24"));
-//        carService.checkIfAvailable(rentService, rentalStorage, customerStorage, 2, carStorage);
-//        customerStorage.addCustomer(new Customer(3, "SCFEKBBK1DGD16518", "2025-06-28", "2025-06-27"));
-//        carService.checkIfAvailable(rentService, rentalStorage, customerStorage, 3, carStorage);
+        customerStorage.addCustomer(new Customer(2, "SCFEKBBK1DGD16518", "2025-06-21", "2025-06-24"));
+        carService.checkIfAvailable(rentService, rentalStorage, customerStorage, 2, carStorage);
+        customerStorage.addCustomer(new Customer(3, "SCFEKBBK1DGD16518", "2025-06-28", "2025-06-27"));
+        carService.checkIfAvailable(rentService, rentalStorage, customerStorage, 3, carStorage);
 
         assertTrue(rentalStorage.checkIfAvailable(customerStorage, 1));
-//        assertTrue(rentalStorage.checkIfAvailable(customerStorage, 2));
-//        assertTrue(rentalStorage.checkIfAvailable(customerStorage, 3));
+        assertTrue(rentalStorage.checkIfAvailable(customerStorage, 2));
+        assertTrue(rentalStorage.checkIfAvailable(customerStorage, 3));
     }
 
 

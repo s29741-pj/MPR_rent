@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class RentService {
 
-    public void uploadNewRent (boolean carServiceCheck,RentalStorage rentalStorage, CustomerStorage customerStorage, int customerID) {
-        if(carServiceCheck) {
+    public void uploadNewRent(boolean carServiceCheck, RentalStorage rentalStorage, CustomerStorage customerStorage, int customerID) {
+        if (carServiceCheck) {
             rentalStorage.addNewRental(
                     new Rent(
                             customerStorage.getCustomer(customerID).getSelectedCarVin(),
@@ -16,9 +16,7 @@ public class RentService {
                             customerStorage.getCustomer(customerID).getPrice()
                     )
             );
-            System.out.println("Rent was added");
-        }else{
-            System.out.println("Rent was not added");
+        } else {
         }
     }
 }
