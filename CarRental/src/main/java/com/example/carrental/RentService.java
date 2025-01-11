@@ -17,6 +17,8 @@ public class RentService {
                     )
             );
         } else {
+//            error message here
+
         }
     }
 }
