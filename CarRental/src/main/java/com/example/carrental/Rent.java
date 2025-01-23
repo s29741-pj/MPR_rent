@@ -19,6 +19,8 @@ public class Rent {
         this.rentPrice = setTotalPrice(price, selectedRentStart, selectedRentEnd);
     }
 
+
+
 //    setters
 
     public LocalDate setRentStart(LocalDate selectedRentStart) {
@@ -44,6 +46,10 @@ public class Rent {
 
 //    getters
 
+    public int getCustomerId(){
+        return customerId;
+    }
+
     public String getRentCarVin() {
         return rentCarVin;
     }
@@ -54,7 +60,12 @@ public class Rent {
     public LocalDate getRentEnd(){
         return rentEnd;
     }
-//
+
+    public float getRentPrice() {
+        return rentPrice;
+    }
+
+    //
     private int calculateRentPeriod(LocalDate selectedRentStart, LocalDate selectedRentEnd) {
         Period period = Period.between(selectedRentStart, selectedRentEnd);
         return period.getDays();
